@@ -58,7 +58,7 @@ namespace WingtipToys
 
                 if (ex.InnerException != null)
                 {
-                    InnerMessage.Text = ex.GetType().ToString() + "<br/>" +
+                    InnerMessage.Text = ex.GetType().ToString() + "<br />" +
                         ex.InnerException.Message;
                     InnerTrace.Text = ex.InnerException.StackTrace;
                 }

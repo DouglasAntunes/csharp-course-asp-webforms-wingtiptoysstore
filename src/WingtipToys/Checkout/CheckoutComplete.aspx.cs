@@ -40,11 +40,16 @@ namespace WingtipToys.Checkout
                     ProductContext _db = new ProductContext();
                     // Get the current order id.
                     int currentOrderId = -1;
-#pragma warning disable CS0184 // 'is' expression's given expression is never of the provided type
-                    currentOrderId = Session["currentOrderId"].GetType() is Int32
-#pragma warning restore CS0184 // 'is' expression's given expression is never of the provided type
-                        ? (Int32)Session["currentOrderId"]
-                        : Convert.ToInt32(Session["currentOrderID"]);
+
+                    try
+                    {
+                        currentOrderId = (int)Session["currentOrderId"];
+                    }
+                    catch(InvalidCastException)
+                    {
+                        Response.Redirect("~/Default.aspx");
+                    }
+
                     Order myCurrentOrder;
                     if (currentOrderId >= 0)
                     {

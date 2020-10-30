@@ -1,64 +1,40 @@
 ﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="WingtipToys.ProductList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <section>
-        <div>
-            <hgroup><h2><%: Page.Title %></h2></hgroup>
+    <section class="col">
+        <h2><%: Page.Title %></h2>
 
-            <asp:ListView ID="productList" runat="server" DataKeyNames="ProductID" GroupItemCount="4"
-                ItemType="WingtipToys.Models.Product" SelectMethod="GetProducts">
-                <EmptyDataTemplate>
-                    <table><tr><td>No data was returned</td></tr></table>
-                </EmptyDataTemplate>
-                <EmptyItemTemplate><td/></EmptyItemTemplate>
-                <GroupTemplate>
-                    <tr id="itemPlaceholderContainer" runat="server">
-                        <td id="itemPlaceholder" runat="server"></td>
-                    </tr>
-                </GroupTemplate>
-                <ItemTemplate>
-                    <td runat="server">
-                        <table>
-                            <tr>
-                                <td>
-                                    <a href="<%#:GetRouteUrl("ProductByNameRoute", new { productName = Item.ProductName }) %>">
-                                        <img src="/Catalog/Images/Thumbs/<%#:Item.ImagePath %>" width="100" height="75" style="border: solid"/>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="<%#:GetRouteUrl("ProductByNameRoute", new { productName = Item.ProductName }) %>">
-                                        <span><%#:Item.ProductName %></span>
-                                    </a>
-                                    <br />
-                                    <span><strong>Price: </strong><%#: String.Format("{0:c}", Item.UnitPrice) %></span>
-                                    <br />
-                                    <a href="../AddToCart.aspx?productID=<%#: Item.ProductID %>">
-                                        <span class="ProductListItem"><strong>Add to Cart</strong></span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                        </table>
-                        </p>
-                    </td>
-                </ItemTemplate>
-                <LayoutTemplate>
-                    <table class="w-100">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <table id="groupPlaceholderContainer" runat="server" class="w-100">
-                                        <tr id="groupPlaceholder"></tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr><td></td></tr>
-                            <tr></tr>
-                        </tbody>
-                    </table>
-                </LayoutTemplate>
-            </asp:ListView>
-        </div>
+        <asp:ListView ID="productList" runat="server" DataKeyNames="ProductID" GroupItemCount="4"
+            ItemType="WingtipToys.Models.Product" SelectMethod="GetProducts">
+            <EmptyDataTemplate>
+                <div class="alert alert-danger" role="alert">
+                    No data was returned
+                </div>
+            </EmptyDataTemplate>
+            <EmptyItemTemplate><td/></EmptyItemTemplate>
+            <GroupTemplate>
+                <div id="itemPlaceholderContainer" runat="server" class="col d-flex justify-content-between">
+                    <div id="itemPlaceholder" runat="server"></div>
+                </div>
+            </GroupTemplate>
+            <ItemTemplate>
+                <div runat="server" class="card mx-2 my-4">
+                    <a href="<%#:GetRouteUrl("ProductByNameRoute", new { productName = Item.ProductName }) %>">
+                        <img src="/Catalog/Images/Thumbs/<%#:Item.ImagePath %>" class="card-img-top" alt="<%#: Item.ProductName %>"/>
+                    </a>
+                    <div class="card-body">
+                        <a href="<%#:GetRouteUrl("ProductByNameRoute", new { productName = Item.ProductName }) %>">
+                            <h5 class="card-title"><%#:Item.ProductName %></h5>
+                        </a>
+                        <p class="card-text"><strong>Price: </strong><%#: String.Format("{0:c}", Item.UnitPrice) %></p>
+                        <a href="../AddToCart.aspx?productID=<%#: Item.ProductID %>" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <div id="groupPlaceHolderContainer" runat="server">
+                    <div id="groupPlaceholder" runat="server"></div>
+                </div>
+            </LayoutTemplate>
+        </asp:ListView>
     </section>
 </asp:Content>

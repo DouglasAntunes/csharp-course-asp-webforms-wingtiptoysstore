@@ -2,22 +2,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:FormView ID="productDetail" runat="server" ItemType="WingtipToys.Models.Product" SelectMethod="GetProduct" RenderOuterTable="false">
         <ItemTemplate>
-            <div><h1><%#:Item.ProductName %></h1></div>
-            <br />
-            <table>
-                <tr>
-                    <td><img src="/Catalog/Images/<%#:Item.ImagePath %>" style="border: solid; height: 300px;" alt="<%#:Item.ProductName %>" /></td>
-                    <td>&nbsp;</td>
-                    <td style="vertical-align: top; text-align: left;">
-                        <strong>Description:</strong><br /><%#:Item.Description %>
-                        <br />
-                        <span><strong>Price:</strong>&nbsp;<%#:String.Format("{0:c}", Item.UnitPrice) %></span>
-                        <br />
-                        <span><strong>Product Number:</strong>&nbsp;<%#:Item.ProductID %></span>
-                        <br />
-                    </td>
-                </tr>
-            </table>
+            <div class="col">
+                <h1><%#:Item.ProductName %></h1>
+                <div class="d-flex flex-column flex-md-row">
+                    <div class="col col-md-4 mr-2 pl-0">
+                        <img src="/Catalog/Images/<%#:Item.ImagePath %>" class="img-fluid w-100 border border-dark" alt="<%#:Item.ProductName %>" />
+                    </div>
+                    <div class="col col-md-8 text-left mt-4 mt-md-0">
+                        <strong>Description:</strong>
+                        <p><%#:Item.Description %></p>
+                        <p><strong>Price: </strong><%#:String.Format("{0:c}", Item.UnitPrice) %></p>
+                        <p><strong>Product Number:</strong>&nbsp;<%#:Item.ProductID %></p>
+                    </div>
+                </div>
+            </div>
         </ItemTemplate>
     </asp:FormView>
 </asp:Content>
