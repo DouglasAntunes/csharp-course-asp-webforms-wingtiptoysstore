@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using Microsoft.AspNet.Identity;
 using WingtipToys.Logic;
 using WingtipToys.Models;
@@ -79,8 +80,7 @@ namespace WingtipToys
         {
             using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
             {
-                string cartStr = string.Format("Cart ({0})", usersShoppingCart.GetCount());
-                cartCount.InnerText = cartStr;
+                cartCount.InnerText = usersShoppingCart.GetCount().ToString();
             }
         }
 

@@ -11,13 +11,9 @@ body {
     padding-right: 1rem;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"],
-input[type="select"] {
-    max-width: 280px;
+/* Fix &nbsp column on DetailsView */
+.hide-first-column td:first-child {
+    display: none;
 }
 
 /* Responsive: Portrait tablets and up */

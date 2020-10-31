@@ -14,11 +14,13 @@ namespace WingtipToys.Admin
             switch (productAction)
             {
                 case "add":
-                    LabelAddStatus.Text = "Product added!";
+                    AlertBox.Visible = true;
+                    LabelAlertStatus.Text = "Product added!";
                     break;
 
                 case "remove":
-                    LabelRemoveStatus.Text = "Product removed!";
+                    AlertBox.Visible = true;
+                    LabelAlertStatus.Text = "Product removed!";
                     break;
             }
         }
@@ -37,7 +39,9 @@ namespace WingtipToys.Admin
 
             if (!fileOk)
             {
-                LabelAddStatus.Text = "Unable to accept file type.";
+                AlertBox.Attributes.Add("class", AlertBox.Attributes["class"].Replace("alert-success", "alert-danger"));
+                AlertBox.Visible = true;
+                LabelAlertStatus.Text = "Unable to accept file type.";
                 return;
             }
             else
@@ -51,7 +55,9 @@ namespace WingtipToys.Admin
                 }
                 catch(Exception ex)
                 {
-                    LabelAddStatus.Text = ex.Message;
+                    AlertBox.Attributes.Add("class", AlertBox.Attributes["class"].Replace("alert-success", "alert-danger"));
+                    AlertBox.Visible = true;
+                    LabelAlertStatus.Text = ex.Message;
                 }
 
                 // Add product data to DB.
@@ -62,7 +68,9 @@ namespace WingtipToys.Admin
                 );
                 if(!addSuccess)
                 {
-                    LabelAddStatus.Text = "Unable to add new product to database.";
+                    AlertBox.Attributes.Add("class", AlertBox.Attributes["class"].Replace("alert-success", "alert-danger"));
+                    AlertBox.Visible = true;
+                    LabelAlertStatus.Text = "Unable to add new product to database.";
                     return;
                 }
                 else
@@ -99,7 +107,9 @@ namespace WingtipToys.Admin
                 var myItem = _db.Products.Where(c => c.ProductID == productId).FirstOrDefault();
                 if (myItem == null)
                 {
-                    LabelRemoveStatus.Text = "Unable to locate product.";
+                    AlertBox.Attributes.Add("class", AlertBox.Attributes["class"].Replace("alert-success", "alert-danger"));
+                    AlertBox.Visible = true;
+                    LabelAlertStatus.Text = "Unable to locate product.";
                     return;
                 }
                 else

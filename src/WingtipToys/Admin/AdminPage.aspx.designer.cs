@@ -15,6 +15,24 @@ namespace WingtipToys.Admin
     {
 
         /// <summary>
+        /// AlertBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertBox;
+
+        /// <summary>
+        /// LabelAlertStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelAlertStatus;
+
+        /// <summary>
         /// LabelAddCategory control.
         /// </summary>
         /// <remarks>
@@ -159,15 +177,6 @@ namespace WingtipToys.Admin
         protected global::System.Web.UI.WebControls.Button AddProductBtn;
 
         /// <summary>
-        /// LabelAddStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelAddStatus;
-
-        /// <summary>
         /// LabelRemoveProduct control.
         /// </summary>
         /// <remarks>
@@ -193,14 +202,5 @@ namespace WingtipToys.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button RemoveProductBtn;
-
-        /// <summary>
-        /// LabelRemoveStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelRemoveStatus;
     }
 }

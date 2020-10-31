@@ -50,7 +50,7 @@
               <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
               <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
               <li class="nav-item"><a class="nav-link" runat="server" href="~/ProductList">Products</a></li>
-              <li class="nav-item"><a class="nav-link" runat="server" href="~/ShoppingCart" id="cartCount">&nbsp;</a></li>
+              <li class="nav-item"><a class="nav-link" runat="server" href="~/ShoppingCart">Cart<span class="badge badge-light ml-2" id="cartCount" runat="server">&nbsp;</span></a></li>
             </ul>
             <asp:LoginView runat="server" ViewStateMode="Disabled">
                 <AnonymousTemplate>
@@ -70,32 +70,34 @@
             </asp:LoginView>
           </div>
         </nav>
-        
-        <div id="TitleContent" style="text-align: center">
-            <a runat="server" href="~/">
-                <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.jpg" BorderStyle="None" />
-            </a>
-            <br />
-        </div>
-        <div id="CategoryMenu" style="text-align: center">
-            <asp:ListView ID="categoryList" ItemType="WingtipToys.Models.Category"
-                          runat="server" SelectMethod="GetCategories">
-                <ItemTemplate>
-                    <b style="font-size: large; font-style: normal">
-                        <a href="<%#: GetRouteUrl("ProductsByCategoryRoute", new { categoryName = Item.CategoryName }) %>">
-                            <%#: Item.CategoryName %>
-                        </a>
-                    </b>
-                </ItemTemplate>
-                <ItemSeparatorTemplate> | </ItemSeparatorTemplate>
-            </asp:ListView>
-        </div>
 
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
+            <div class="row">
+                <a runat="server" href="~/" class="mx-auto">
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.jpg" BorderStyle="None" />
+                </a>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <p>
+                    <asp:ListView ID="categoryList" ItemType="WingtipToys.Models.Category"
+                              runat="server" SelectMethod="GetCategories">
+                        <ItemTemplate>
+                            <strong style="font-size: large; font-style: normal">
+                                <a href="<%#: GetRouteUrl("ProductsByCategoryRoute", new { categoryName = Item.CategoryName }) %>">
+                                    <%#: Item.CategoryName %>
+                                </a>
+                            </strong>
+                        </ItemTemplate>
+                        <ItemSeparatorTemplate>|</ItemSeparatorTemplate>
+                    </asp:ListView>
+                </p>
+            </div>
+            <div class="flex-row">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
             <footer>
+                <hr />
                 <p>&copy; <%: DateTime.Now.Year %> - Wingtip Toys</p>
             </footer>
         </div>
